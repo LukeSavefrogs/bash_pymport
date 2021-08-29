@@ -65,10 +65,10 @@ function from () {
         . "$module_path";
         
         for param in "${params[@]}"; do
-            declare -p "${param}" | sed -re "s/declare (-[[:alnum:]-])/declare -g \1/; s/([[:alnum:]_.-]+)=/${namespace}\1=/"; 
+            declare -p "${param}" 2>/dev/null | sed -re "s/declare (-[[:alnum:]-])/declare -g \1/; s/([[:alnum:]_.-]+)=/${namespace}\1=/"; 
             __variable_rc=$?;
             
-            declare -f "${param}" | sed "1s/^/${namespace}/"; 
+            declare -f "${param}" 2>/dev/null | sed "1s/^/${namespace}/"; 
             __function_rc=$?;
             
             (( (__function_rc + __variable_rc) > 0 )) && {
