@@ -1,0 +1,14 @@
+test_function1 () { echo "Test Funzione 1"; }
+function test_function2 { echo "Test 2"; }
+function test_function3 () { echo "Test 3"; }
+
+declare test_variable1="test_value1"
+declare -i test_variable2="test_value2"
+declare -rA test_variable1=(
+    [foo]=bar
+)
+declare -gx test_variable3="test_value3"
+
+
+
+# function hi3 () { printf "\033[0;32mTEST\033[0m\n"; }
